@@ -45,7 +45,7 @@ class StudentController {
             const mailObj = {
                 to: email, 
                 subject: "Your New Account Details",
-                text: `Hello ${name},\n\nYour account has been created.\n\nUsername: ${userName}\nPassword: ${password}\n\nPlease keep this information safe.\n\nThank you!`,
+                text: `Hello ${name},\n\nYour account has been created.\n\nuserName: ${userName}\npassword: ${password}\n\nPlease keep this information safe.\n\nThank you!`,
             };
     
             await mailer.sendMail(mailObj);

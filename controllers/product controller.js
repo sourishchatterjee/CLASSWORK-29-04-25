@@ -164,6 +164,34 @@ class productController {
             });
         }
     }
+    ////
+    async getProductsByLoggedInUser(req, res) {
+        try {
+            const userId = req.user.id; // from JWT token _id
+    
+            const userProducts = await productModel.find({ userId });
+    
+            if (userProducts && userProducts.length > 0) {
+                res.status(200).json({
+                    success: true,
+                    message: "Products added by the logged-in user",
+                    data: userProducts,
+                });
+            } else {
+                res.status(404).json({
+                    success: false,
+                    message: "No products found for this user",
+                    data: [],
+                });
+            }
+        } catch (error) {
+            console.error("Error fetching products for logged-in user:", error);
+            res.status(500).json({
+                success: false,
+                message: "Server error while fetching products",
+            });
+        }
+    }
     
 
 
